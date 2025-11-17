@@ -168,6 +168,7 @@ console.log(filterActiveUsers(users)); //! output -> [ { id: 1, name: 'Rakib', e
 //? isAvailable (boolean)
 //? Then, create a function printBookDetails that accepts an object of type Book and prints its details to the console in the format: "Title: [title], Author: [author], Published: [publishedYear], Available: [Yes/No]".
 
+
 //* solution No 6 =>
 console.log()
 console.log("Output of problem-6 =>")
@@ -178,10 +179,10 @@ interface Book {
     publishedYear: number ;
     isAvailable: boolean;
 }
+
 const printBookDetails = (book : Book)=> {
         console.log(`Title: ${book.title}, Author: ${book.author}, Published: ${book.publishedYear}, Available: ${book.isAvailable? "Yes" : "No"}`)
 }
-
 const myBook: Book = {
     title: 'The Great Gatsby',
     author: 'F. Scott Fitzgerald',
@@ -189,6 +190,41 @@ const myBook: Book = {
     isAvailable: true,
   }; 
 printBookDetails(myBook); //! output -> Title: The Great Gatsby, Author: F. Scott Fitzgerald, Published: 1925, Available: Yes
+
+
+
+
+
+
+//! Problem 7:
+//? Create a function getUniqueValues that accepts two arrays and returns a new array containing only the unique values from both arrays, without any duplicates.
+//? Requirements:
+//? You must write the correct type for the function parameter and the return type.
+//? The function should handle arrays of strings or numbers.
+//? You are not allowed to use any built-in methods to solve this problem.
+
+//* solution No 7 =>
+console.log()
+console.log("Output of problem-7 =>")
+
+type TArr = (string | number)[]
+const getUniqueValues = (arrOne : TArr , arrTwo: TArr): TArr=>{
+     const newArr : TArr = []
+     arrOne.map((item)=> {
+        if(!newArr.includes(item)){
+            newArr.push(item)
+        }
+     })
+     arrTwo.map((item)=> {
+        if(!newArr.includes(item)){
+            newArr.push(item)
+        }
+     })
+     return newArr
+}
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [3, 4, 5, 6, 7];
+console.log(getUniqueValues(array1, array2)); //! output -> [1, 2, 3, 4, 5, 6, 7];
 
 
 
