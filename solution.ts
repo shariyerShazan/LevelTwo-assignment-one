@@ -159,3 +159,38 @@ console.log(filterActiveUsers(users)); //! output -> [ { id: 1, name: 'Rakib', e
 
 
 
+
+//! Problem 6:
+//? Define an interface Book with the following properties:
+//? title (string)
+//? author (string)
+//? publishedYear (number)
+//? isAvailable (boolean)
+//? Then, create a function printBookDetails that accepts an object of type Book and prints its details to the console in the format: "Title: [title], Author: [author], Published: [publishedYear], Available: [Yes/No]".
+
+//* solution No 6 =>
+console.log()
+console.log("Output of problem-6 =>")
+
+interface Book {
+    title : string ;
+    author: string ;
+    publishedYear: number ;
+    isAvailable: boolean;
+}
+const printBookDetails = (book : Book)=> {
+        console.log(`Title: ${book.title}, Author: ${book.author}, Published: ${book.publishedYear}, Available: ${book.isAvailable? "Yes" : "No"}`)
+}
+
+const myBook: Book = {
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    publishedYear: 1925,
+    isAvailable: true,
+  }; 
+printBookDetails(myBook); //! output -> Title: The Great Gatsby, Author: F. Scott Fitzgerald, Published: 1925, Available: Yes
+
+
+
+
+
