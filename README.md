@@ -3,8 +3,10 @@
 এই ব্লগে আমরা দুটি বিষয় একসাথে দেখব:  
 
 - Interface এবং Type এর মধ্যে পার্থক্য  
-- any, unknown, এবং never টাইপের পার্থক্য  
+- any, unknown, এবং never টাইপের পার্থক্য
 
+  
+# TypeScript -Interface vs Type
 TypeScript এ interface এবং type উভয়ই অবজেক্টের structure define করতে ব্যবহার করা হয়, কিন্তু তাদের মধ্যে কিছু গুরুত্বপূর্ণ পার্থক্য রয়েছে। Interface সাধারণত অবজেক্ট বা ক্লাসের জন্য, type আরও flexible এবং union, intersection, primitive, tuple define করতে পারে। Interface declaration merge করতে পারে, type করতে পারে না।  
 
 উদাহরণ সহ টেবিল:
@@ -71,7 +73,7 @@ TypeScript এ `any` টাইপ এমন একটি টাইপ যা স
 
 ---
 
-**উদাহরণ:**
+## উদাহরণ:
 ```ts
 let value: any;
 value = 10;
