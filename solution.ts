@@ -216,18 +216,25 @@ console.log()
 console.log("Output of problem-7 =>")
 
 type TArr = (string | number)[]
+
 const getUniqueValues = (arrOne : TArr , arrTwo: TArr): TArr=>{
      const newArr : TArr = []
-     arrOne.map((item)=> {
-        if(!newArr.includes(item)){
-            newArr.push(item)
+     const addUnique = (arr: TArr) => {
+        for (let i = 0; i < arr.length; i++) {
+            let found = false;
+            for (let j = 0; j < newArr.length; j++) {
+                if (arr[i] === newArr[j]) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                newArr.push(arr[i]);
+            }
         }
-     })
-     arrTwo.map((item)=> {
-        if(!newArr.includes(item)){
-            newArr.push(item)
-        }
-     })
+    };
+    addUnique(arrOne);
+    addUnique(arrTwo);
      return newArr
 }
 const array1 = [1, 2, 3, 4, 5];
