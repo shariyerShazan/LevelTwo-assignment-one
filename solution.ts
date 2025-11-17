@@ -130,3 +130,32 @@ console.log(filterByRating(books2));//! output -> No book found
 
 
 
+//! Problem 5:
+//? Create a function filterActiveUsers that accepts an array of user objects. Each user object contains id, name, email, and isActive properties. The function should return a new array containing only the users whose isActive property is true.
+
+
+//* solution No 5 =>
+console.log()
+console.log("Output of problem-5 =>")
+
+type TUser = {
+    id: number ;
+    name: string ;
+    email: string ;
+    isActive : boolean ;
+}
+const filterActiveUsers = (users: TUser[])=>{
+     const activeUser = users.filter((user) => user?.isActive === true)
+     return activeUser
+}
+const users = [
+    { id: 1, name: 'Rakib', email: 'rakib@example.com', isActive: true },
+    { id: 2, name: 'Asha', email: 'asha@example.com', isActive: false },
+    { id: 3, name: 'Rumi', email: 'rumi@example.com', isActive: true },
+  ];
+console.log(filterActiveUsers(users)); //! output -> [ { id: 1, name: 'Rakib', email: 'rakib@example.com', isActive: true },{ id: 3, name: 'Rumi', email: 'rumi@example.com', isActive: true } ]
+
+
+
+
+
