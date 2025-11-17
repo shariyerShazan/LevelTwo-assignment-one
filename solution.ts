@@ -84,7 +84,7 @@ const person1 = new Person('John Doe', 30);
 console.log(person1.getDetails()); //! output -> 'Name: [John Doe], Age: [30]'
 
 const person2 = new Person('Alice', 25);
-console.log(person2.getDetails()); //! output -> 'Name: [John Doe], Age: [30]'
+console.log(person2.getDetails()); //! output -> 'Name: [Alice], Age: [25]'
 
 // const person3 = new Person('Alice');
 // console.log(person3.getDetails()); //! output -> Name and age is required
@@ -109,13 +109,20 @@ type TBook ={
     rating: number
 }
 
-const filterByRating = (books: TBook[]) : TBook[] | string=>{
-       const sortedBook = books.sort((a,b)=> a.rating - b.rating).filter((book)=> book.rating > 4)
-       if(sortedBook.length === 0) {
-        return "No book found"
-       }
-       return sortedBook
-}
+const filterByRating = (books: TBook[]): TBook[] | string => {
+    for (const book of books) {
+        if (book.rating < 0 || book.rating > 5) {
+            return `Rating of book "${book.title}" must be between 0-5`;
+        }
+    }
+    const filteredBooks = books.filter(book => book.rating >= 4);
+     const sortedBooks = [...filteredBooks].sort((a, b) => a.rating - b.rating);
+     if (sortedBooks.length === 0) {
+         return "No book found";
+     } else{
+        return sortedBooks;
+     } 
+};
 const books : TBook[] = [
     { title: 'Book A', rating: 4.5 },
     { title: 'Book B', rating: 3.2 },
@@ -123,7 +130,7 @@ const books : TBook[] = [
   ];
 console.log(filterByRating(books)); //! output -> [ { title: 'Book A', rating: 4.5 }, { title: 'Book C', rating: 5 } ]
 const books2 = []
-console.log(filterByRating(books2));//! output -> No book found
+// console.log(filterByRating(books2));//! output -> No book found
 
 
 
@@ -203,6 +210,7 @@ printBookDetails(myBook); //! output -> Title: The Great Gatsby, Author: F. Scot
 //? The function should handle arrays of strings or numbers.
 //? You are not allowed to use any built-in methods to solve this problem.
 
+
 //* solution No 7 =>
 console.log()
 console.log("Output of problem-7 =>")
@@ -230,3 +238,47 @@ console.log(getUniqueValues(array1, array2)); //! output -> [1, 2, 3, 4, 5, 6, 7
 
 
 
+
+//! Problem 8:
+//? Create a function calculateTotalPrice that accepts an array of product objects. Each product object contains the following properties:
+//? name (string)
+//? price (number)
+//? quantity (number)
+//? discount?: optional number from 0–100, representing a percentage discount
+//? The function should return the total price of all products in the array, taking into account the discount for each product (if provided). If the array is empty, return 0.
+
+
+//* solution No 8 =>
+console.log()
+console.log("Output of problem-8 =>")
+
+type TProduct = {
+    name : string ;
+    price: number ;
+    quantity: number ;
+    discount? : number
+}
+
+const calculateTotalPrice = (products: TProduct[])=> {
+    let totalPrice = 0
+    if(products.length === 0){
+        return 0
+    }
+    products.map((product)=> {
+        if (product.discount !== undefined) {
+            if (product.discount < 0 || product.discount > 100) {
+                throw new Error("Discount must be between 0 and 100");
+            }
+            totalPrice = totalPrice +  (product.price * product.quantity) - ((product.price * product.quantity) * product.discount /100)
+        } else{
+            totalPrice += (product.price * product.quantity)
+        }
+    })
+   return totalPrice  
+}
+const products = [
+    { name: 'Pen', price: 10, quantity: 2 },
+    { name: 'Notebook', price: 25, quantity: 3, discount: 10 },
+    { name: 'Bag', price: 50, quantity: 1, discount: 20 },
+  ];
+console.log(calculateTotalPrice(products)); //! output -> 127.5
